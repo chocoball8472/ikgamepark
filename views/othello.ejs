@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta chrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title><%= title %></title>
+  </head>
+  <body>
+
+    <div class="modal" role="dialog" id="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h2>テスト</h2>
+          </div>
+          <div class="modal-footer">
+            <form method="get" action="/home">
+              <button type="submit" class="btn btn-primary">中断</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed-top col-lg-6 offset-lg-3 mt-3" id="alert_display"></div>
+
+    <div class="container">
+
+      <div class="row mt-3 bg-dark">
+        <div class="col-6">
+          <div class="row">
+            <h4 class="col-12 text-center text-white mt-2" id="my_name"></h4>
+          </div>
+          <div class="row">
+            <h4 class="col-12 text-center text-white" id="my_turn"></h4>
+          </div>
+          <div class="row">
+            <h4 class="col-12 text-center text-white" id="my_maisu"></h4>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <h4 class="col-12 text-center text-white mt-2" id="opp_name"></h4>
+          </div>
+          <div class="row">
+            <h4 class="col-12 text-center text-white" id="opp_turn"></h4>
+          </div>
+          <div class="row">
+            <h4 class="col-12 text-center text-white mt-2" id="opp_maisu"></h4>
+          </div>
+        </div>
+
+        <h4 class="col-12 text-center text-white" id="current_turn"></h4>
+      </div>
+
+      <div class="row mt-3 mt-lg-3">
+        <div class="col-12 col-lg-8" id="board">
+          <div class="row" id="rows_1"></div>
+          <div class="row" id="rows_2"></div>
+          <div class="row" id="rows_3"></div>
+          <div class="row" id="rows_4"></div>
+          <div class="row" id="rows_5"></div>
+          <div class="row" id="rows_6"></div>
+          <div class="row" id="rows_7"></div>
+          <div class="row" id="rows_8"></div>
+        </div>
+
+        <div class="col-10 col-lg bg-white ml-lg-1 mt-lg-0 mt-1 mb-2">
+          <div class="row">
+            <textarea rows="1" class="col-9" id="text_area"></textarea>
+            <button type="button" class="btn btn-danger col ml-1" id="chat_button">送信</button>
+          </div>
+          <div class="row mt-2">
+            <div class="col-12 bg-primary overflow-auto" id="chat" style="height: 50vh; max-height: 50vh;">
+              <div class="row" id="chat_body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-none">
+      <img src="/images/empty.png" class="img-fulid col border border-dark" style="padding: 0px;" id="empty">
+      <img src="/images/black.png" class="img-fulid col border border-dark" style="padding: 0px;" id="black">
+      <img src="/images/white.png" class="img-fulid col border border-dark" style="padding: 0px;" id="white">
+
+      <div class="col-12 mt-2" id="opp_log">
+        <!--<p class="border border-success rounded bg-white py-1 px-2 float-left"></p>-->
+      </div>
+      <div class="col-12 mt-2" id="my_log">
+        <!--<p class="border border-success rounded py-1 px-2 float-right" style="background-color: #98FB98;"></p>-->
+      </div>
+
+      <div class="alert alert-warning alert-dismissible" role="alert" id="alert_content">
+        <strong></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      const my_name = <%- JSON.stringify(username) %>;
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/javascripts/client_othello/main.js"></script>
+  </body>
+</html>
