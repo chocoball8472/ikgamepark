@@ -78,7 +78,7 @@ module.exports = class World
       }
     }
     return opp_player;
-  };
+  }
 
   scanBoard(my_player, opp_player) {
     my_player.maisu = 0;

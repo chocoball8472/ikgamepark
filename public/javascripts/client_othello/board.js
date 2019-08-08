@@ -123,7 +123,9 @@ export default class Board
     util.current_turn = turn;
     this.pathInfo(pathCount);
     this.create(boardData, (cx, cy, board) => {
-      if(util.current_turn !== util.player.turn) {return;}
+      if(util.current_turn !== util.player.turn || board[cy][cx] !== 0) {
+        return;
+      }
       this.placeProcess(cx, cy, board);
     });
     this.my_maisu.textContent = util.player.maisu;
