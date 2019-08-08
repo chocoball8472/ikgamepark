@@ -1,7 +1,9 @@
 import Chat from './chat.js';
 import Board from './board.js';
 
-export const socket = io();
+export const socket = io(location.origin, {
+  transports: ['websocket'],
+});
 export const util = {
   player: null,
   opponent: null,
